@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Search from './Search';
+import Words from './Words';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +43,9 @@ class App extends Component {
     this.setState({ synonyms_list: [...this.state.synonyms_list, this.state.synonym], synonym: '' });
 
   }
+  onChangeSynonym = e => {
+    this.setState({ synonym: e.target.value });
+  }
   onChangeWord = e => {
 
     if (this.state.words[e.target.value]) {
@@ -50,7 +55,7 @@ class App extends Component {
     }
     this.setState({ word: e.target.value });
   }
-  search = (e) => {
+  onSearch = (e) => {
     let value = e.target.value;
     let synonyms = [];
     this.setState({ search: value, search_results: [] });
@@ -91,24 +96,21 @@ class App extends Component {
         <header>
           <h1>Synonym Dictionary</h1>
         </header>
-        <main>
-          <input type='text' placeholder="Enter your word" value={word} onChange={this.onChangeWord} />
-          <br />
-          {synonyms_list.length > 0 && synonyms}
-          <br />
-          {word.length > 0 && <input type='text' placeholder="Add synonym" value={synonym} onChange={e => this.setState({ synonym: e.target.value })} />}
-          {word.length > 0 && <button style={{ marginLeft: '1em' }} disabled={!synonyms_list.indexOf(synonym) || synonym === word || synonym === ""} onClick={this.updateSynonyms}>Add</button>}
-          <br />
-          <br />
-          {word.length > 0 && synonyms_list.length > 0 && <button onClick={this.addWord}>Save word</button>}
-        </main>
-        <section className='search'>
-          <hr />
-          <h2>Search words</h2>
-          <input type='text' placeholder="Search" value={search} onChange={this.search} />
-          <br />
-          {search_synonyms}
-        </section>
+        <Words
+          word={word}
+          onChangeWord={this.onChangeWord}
+          onChangeSynonym={this.onChangeSynonym}
+          synonyms_list={synonyms_list}
+          synonyms={synonyms}
+          synonym={synonym}
+          updateSynonyms={this.updateSynonyms}
+          addWord={this.addWord}
+        />
+        <Search
+          search={search}
+          onSearch={this.onSearch}
+          search_synonyms={search_synonyms}
+        />
       </div>
     );
   }
