@@ -15,17 +15,26 @@ class App extends Component {
   }
   addWord = () => {
     let words = { ...this.state.words };
+    let synonyms_list = [...this.state.synonyms_list];
     if (words[this.state.word]) {
-      words[this.state.word].synonyms = [...this.state.synonyms_list];
-      this.setState({ words }, () => console.log(this.state.words));
+      words[this.state.word].synonyms = [...synonyms_list];
     } else {
       words[this.state.word] = {
         name: this.state.word,
-        synonyms: [...this.state.synonyms_list]
+        synonyms: [...synonyms_list]
       };
-      this.setState({ words }, () => console.log(this.state.words));
     }
-    this.setState({ synonyms_list: [], word: '' });
+    for (let i = 0; i < synonyms_list.length; i++) {
+      if (!words[synonyms_list[i]]) {
+        let syns = [...synonyms_list];
+        syns.splice(i, 1);
+        words[synonyms_list[i]] = {
+          name: synonyms_list[i],
+          synonyms: [...syns, this.state.word]
+        }
+      }
+    }
+    this.setState({ words, synonyms_list: [], word: '' }, () => console.log(this.state.words));
   }
   updateSynonyms = key => {
     if (key === 'add') {
@@ -76,7 +85,7 @@ class App extends Component {
           {synonyms_list.length > 0 && synonyms}
           <br />
           {word.length > 0 && <input type='text' placeholder="Add synonym" value={synonym} onChange={e => this.setState({ synonym: e.target.value })} />}
-          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym)} onClick={() => this.updateSynonyms('add')}>Add</button>}
+          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym) || synonym === word} onClick={() => this.updateSynonyms('add')}>Add</button>}
           <br />
           <br />
           {word.length > 0 && synonyms_list.length > 0 && <button onClick={this.addWord}>Save word</button>}
