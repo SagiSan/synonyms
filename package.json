@@ -1,6 +1,6 @@
 {
   "name": "synonyms",
-  "homepage": "https://github.com/SagiSan/synonyms",
+  "homepage": "https://sagisan.github.io/synonym_dictionary",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

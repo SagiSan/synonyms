@@ -97,7 +97,7 @@ class App extends Component {
           {synonyms_list.length > 0 && synonyms}
           <br />
           {word.length > 0 && <input type='text' placeholder="Add synonym" value={synonym} onChange={e => this.setState({ synonym: e.target.value })} />}
-          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym) || synonym === word} onClick={this.updateSynonyms}>Add</button>}
+          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym) || synonym === word || synonym === ""} onClick={this.updateSynonyms}>Add</button>}
           <br />
           <br />
           {word.length > 0 && synonyms_list.length > 0 && <button onClick={this.addWord}>Save word</button>}
@@ -105,7 +105,7 @@ class App extends Component {
         <section className='search'>
           <hr />
           <h2>Search words</h2>
-          <input type='text' placeholder="search" value={search} onChange={this.search} />
+          <input type='text' placeholder="Search" value={search} onChange={this.search} />
           <br />
           {search_synonyms}
         </section>
