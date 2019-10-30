@@ -16,22 +16,23 @@ class App extends Component {
   addWord = () => {
     let words = { ...this.state.words };
     let synonyms_list = [...this.state.synonyms_list];
-    if (words[this.state.word]) {
-      words[this.state.word].synonyms = [...synonyms_list];
-    } else {
+
+    if (!words[this.state.word]) {
       words[this.state.word] = {
         name: this.state.word,
-        synonyms: [...synonyms_list]
       };
     }
+    words[this.state.word].synonyms = [...synonyms_list];
+
+
     for (let i = 0; i < synonyms_list.length; i++) {
       if (!words[synonyms_list[i]]) {
-        let syns = [...synonyms_list];
-        syns.splice(i, 1);
         words[synonyms_list[i]] = {
           name: synonyms_list[i],
-          synonyms: [...syns, this.state.word]
+          synonyms: [this.state.word]
         }
+      } else {
+        words[synonyms_list[i]].synonyms.push(this.state.word);
       }
     }
     this.setState({ words, synonyms_list: [], word: '' }, () => console.log(this.state.words));
@@ -47,6 +48,8 @@ class App extends Component {
 
     if (this.state.words[e.target.value]) {
       this.setState({ synonyms_list: [...this.state.words[e.target.value].synonyms] })
+    } else {
+      this.setState({ synonyms_list: [] });
     }
     this.setState({ word: e.target.value });
   }
