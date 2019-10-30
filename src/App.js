@@ -35,14 +35,11 @@ class App extends Component {
         words[synonyms_list[i]].synonyms.push(this.state.word);
       }
     }
-    this.setState({ words, synonyms_list: [], word: '' }, () => console.log(this.state.words));
+    this.setState({ words, synonyms_list: [], word: '' });
   }
-  updateSynonyms = key => {
-    if (key === 'add') {
-      this.setState({ synonyms_list: [...this.state.synonyms_list, this.state.synonym], synonym: '' });
-    } else {
-      console.log('find and update synonym');
-    }
+  updateSynonyms = () => {
+    this.setState({ synonyms_list: [...this.state.synonyms_list, this.state.synonym], synonym: '' });
+
   }
   onChangeWord = e => {
 
@@ -53,13 +50,25 @@ class App extends Component {
     }
     this.setState({ word: e.target.value });
   }
-  search = e => {
+  search = (e) => {
     let value = e.target.value;
     let synonyms = [];
+    this.setState({ search: value, search_results: [] });
     if (this.state.words[value]) {
-      synonyms = [...this.state.words[value].synonyms];
+      let search_results = this.searchRecursion(value, synonyms);
+      search_results.splice(0, 1);
+      this.setState({ search_results });
     }
-    this.setState({ search: value, search_results: [...synonyms] });
+  }
+  searchRecursion = (value, results) => {
+    if (results.indexOf(value) > -1) {
+      return results;
+    }
+    results.push(value);
+    for (let i = 0; i < this.state.words[value].synonyms.length; i++) {
+      this.searchRecursion(this.state.words[value].synonyms[i], results);
+    }
+    return results;
   }
   render() {
     const { word, synonym, synonyms_list, search, search_results } = this.state;
@@ -88,7 +97,7 @@ class App extends Component {
           {synonyms_list.length > 0 && synonyms}
           <br />
           {word.length > 0 && <input type='text' placeholder="Add synonym" value={synonym} onChange={e => this.setState({ synonym: e.target.value })} />}
-          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym) || synonym === word} onClick={() => this.updateSynonyms('add')}>Add</button>}
+          {word.length > 0 && <button disabled={!synonyms_list.indexOf(synonym) || synonym === word} onClick={this.updateSynonyms}>Add</button>}
           <br />
           <br />
           {word.length > 0 && synonyms_list.length > 0 && <button onClick={this.addWord}>Save word</button>}
