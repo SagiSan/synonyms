@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/synonym_dictionary/static/css/main.b5d9be62.chunk.css",
-    "main.js": "/synonym_dictionary/static/js/main.f95f0534.chunk.js",
-    "main.js.map": "/synonym_dictionary/static/js/main.f95f0534.chunk.js.map",
+    "main.js": "/synonym_dictionary/static/js/main.801f39a3.chunk.js",
+    "main.js.map": "/synonym_dictionary/static/js/main.801f39a3.chunk.js.map",
     "runtime-main.js": "/synonym_dictionary/static/js/runtime-main.be96a753.js",
     "runtime-main.js.map": "/synonym_dictionary/static/js/runtime-main.be96a753.js.map",
     "static/js/2.bdef7236.chunk.js": "/synonym_dictionary/static/js/2.bdef7236.chunk.js",
     "static/js/2.bdef7236.chunk.js.map": "/synonym_dictionary/static/js/2.bdef7236.chunk.js.map",
     "index.html": "/synonym_dictionary/index.html",
-    "precache-manifest.10fb14ef8bf20f2b2f938b6e0dd4fded.js": "/synonym_dictionary/precache-manifest.10fb14ef8bf20f2b2f938b6e0dd4fded.js",
+    "precache-manifest.a51c86a947068fd80095985c39f92284.js": "/synonym_dictionary/precache-manifest.a51c86a947068fd80095985c39f92284.js",
     "service-worker.js": "/synonym_dictionary/service-worker.js",
     "static/css/main.b5d9be62.chunk.css.map": "/synonym_dictionary/static/css/main.b5d9be62.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.be96a753.js",
     "static/js/2.bdef7236.chunk.js",
     "static/css/main.b5d9be62.chunk.css",
-    "static/js/main.f95f0534.chunk.js"
+    "static/js/main.801f39a3.chunk.js"
   ]
 }
