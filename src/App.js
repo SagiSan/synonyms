@@ -37,7 +37,9 @@ class App extends Component {
         words[synonyms_list[i]].synonyms.push(this.state.word);
       }
     }
-    this.setState({ words, synonyms_list: [], word: '' });
+    this.setState({ words, synonyms_list: [], word: '' }, () => {
+      alert('Word added. Try searching for it or its synonyms');
+    });
   }
   updateSynonyms = () => {
     this.setState({ synonyms_list: [...this.state.synonyms_list, this.state.synonym], synonym: '' });
