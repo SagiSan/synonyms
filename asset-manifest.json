@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/SagiSan/synonyms/static/css/main.f8d34488.chunk.css",
+    "main.js": "/SagiSan/synonyms/static/js/main.a7666be9.chunk.js",
+    "main.js.map": "/SagiSan/synonyms/static/js/main.a7666be9.chunk.js.map",
+    "runtime-main.js": "/SagiSan/synonyms/static/js/runtime-main.4cfb712f.js",
+    "runtime-main.js.map": "/SagiSan/synonyms/static/js/runtime-main.4cfb712f.js.map",
+    "static/js/2.bdef7236.chunk.js": "/SagiSan/synonyms/static/js/2.bdef7236.chunk.js",
+    "static/js/2.bdef7236.chunk.js.map": "/SagiSan/synonyms/static/js/2.bdef7236.chunk.js.map",
+    "index.html": "/SagiSan/synonyms/index.html",
+    "precache-manifest.fd91d080a4c186215b1aa0a0849606be.js": "/SagiSan/synonyms/precache-manifest.fd91d080a4c186215b1aa0a0849606be.js",
+    "service-worker.js": "/SagiSan/synonyms/service-worker.js",
+    "static/css/main.f8d34488.chunk.css.map": "/SagiSan/synonyms/static/css/main.f8d34488.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4cfb712f.js",
+    "static/js/2.bdef7236.chunk.js",
+    "static/css/main.f8d34488.chunk.css",
+    "static/js/main.a7666be9.chunk.js"
+  ]
+}
